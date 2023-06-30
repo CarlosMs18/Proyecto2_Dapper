@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\ManejoPresupuesto.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Tinnova1\\source\\repos\\dapper2\\ManejoPresupuesto\\wwwroot\\css\\customcss.css",
+      "PackagePath": "staticwebassets\\css\\customcss.css"
+    },
+    {
       "Id": "C:\\Users\\Tinnova1\\source\\repos\\dapper2\\ManejoPresupuesto\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -195,6 +199,10 @@
     {
       "Id": "C:\\Users\\Tinnova1\\source\\repos\\dapper2\\ManejoPresupuesto\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Tinnova1\\source\\repos\\dapper2\\ManejoPresupuesto\\wwwroot\\lib\\jquery-ui\\jquery-ui.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui\\jquery-ui.min.js"
     },
     {
       "Id": "C:\\Users\\Tinnova1\\source\\repos\\dapper2\\ManejoPresupuesto\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",

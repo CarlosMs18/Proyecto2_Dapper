@@ -5,6 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IRepositorioTiposCuentas, RepositorioTiposCuentas>();//sera addtransient pq el repositorio no compartira datos
+builder.Services.AddTransient<IServicioUsuarios, ServicioUsuarios>();
+
 
 var app = builder.Build();
 
