@@ -1,4 +1,5 @@
 ﻿using ManejoPresupuesto.Validaciones;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace ManejoPresupuesto.Models
@@ -10,7 +11,9 @@ namespace ManejoPresupuesto.Models
         [Required(ErrorMessage = "El campo {0} es requerido")]
         [StringLength(maximumLength:50, MinimumLength = 3, ErrorMessage = "La longitud del campo {0} debe de estar entr {2} y {1} caracteres")]
         [Display(Name ="Nombre del tipo cuenta")] //si tenemos un asp-for en cshtml con esto podemos sincronizar y salra ese valor en ellabel
-        [PrimeraLetraMayuscula] 
+        [PrimeraLetraMayuscula]
+        [Remote(action : "VerificarExisteTipoCuenta",controller : "TiposCuentas")] //saldra un error si el campo es duplicado una vez que quitemos
+                                                                               //el foco al campo que estamos colocando hace una peticion http y verifica 
         public string Nombre { get; set; }
 
         public int UsuarioId { get; set; }
