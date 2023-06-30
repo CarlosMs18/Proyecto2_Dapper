@@ -132,3 +132,4 @@ C:\Users\Tinnova1\source\repos\dapper2\ManejoPresupuesto\obj\Debug\net6.0\refint
 C:\Users\Tinnova1\source\repos\dapper2\ManejoPresupuesto\obj\Debug\net6.0\ManejoPresupuesto.pdb
 C:\Users\Tinnova1\source\repos\dapper2\ManejoPresupuesto\obj\Debug\net6.0\ManejoPresupuesto.genruntimeconfig.cache
 C:\Users\Tinnova1\source\repos\dapper2\ManejoPresupuesto\obj\Debug\net6.0\ref\ManejoPresupuesto.dll
+C:\Users\Tinnova1\source\repos\dapper2\ManejoPresupuesto\obj\Debug\net6.0\scopedcss\Views\Cuentas\Index.cshtml.rz.scp.css
