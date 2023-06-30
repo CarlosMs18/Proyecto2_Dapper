@@ -1,0 +1,49 @@
+﻿@model TipoCuenta
+
+@{
+    ViewData["Title"] = "Crear Tipo Cuenta";
+}
+
+<h1>Crear Tipo Cuenta</h1>
+<h5>El tipo de cuenta se refiere a como podemos agrupar cuentas, Ejemplo : Préstamos, tarjetas de crédito, etc.</h5>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div> @*ALL SIGNIFICA QUE MOSTRARA TODOS LOS ERRORES*@
+@* como esta en All se puede mostrar el error dos vece al utilizar validaciones personalizadas y como estamos mostrando ahora ponemos las validaciones a nivel de modelo
+*@<form asp-controller="TiposCuentas" asp-action="Crear">
+    <div class="mb-3">
+        <label asp-for="Nombre" class="form-label">@*Nombre*@ @*antes de colocar asp-for*@</label> @*hace que el nombre sea dinamico y pondra en el label el nombre delcampo de modelo*@
+        <input type="text" asp-for="Nombre" class="form-control" /> @* id="Nombre" name="Nombre" *@ @*con el asp en el input al hacerun reload o fallar el envio del input se quedara grabado ahi lo queel usuaio coloco*@
+        <span asp-validation-for="Nombre" class="text-danger"></span> @*para que este funcione tenemos que agregar la libreria de jquery*@
+    </div>
+
+    @*el asp-for se sincroniza con el model que estamos pasando*@
+@*
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label> 
+        <input asp-for="Email" class="form-control" /> 
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+
+    <div class="mb-3">
+        <label asp-for="Edad" class="form-label"></label>
+        <input asp-for="Edad" class="form-control" /> 
+        <span asp-validation-for="Edad" class="text-danger"></span>
+    </div>
+
+
+    
+    <div class="mb-3">
+        <label asp-for="TarjetaDeCredito" class="form-label"></label> 
+        <input asp-for="TarjetaDeCredito" class="form-control" /> 
+        <span asp-validation-for="TarjetaDeCredito" class="text-danger"></span>
+
+
+    </div>*@
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+}
