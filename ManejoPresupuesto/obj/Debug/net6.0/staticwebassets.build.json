@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gXPTOpaWCQueMONeTpn4+WXVUXlMWC2I/epSysbWHc8=",
+  "Hash": "QvlDQ/BCFJTeQW+ozIA4IB4pBDY9VGsXrWzOyxSQiuk=",
   "Source": "ManejoPresupuesto",
   "BasePath": "_content/ManejoPresupuesto",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\usuario\\source\\ManejoPresupuesto\\ManejoPresupuesto\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\ManejoPresupuesto.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\usuario\\source\\ManejoPresupuesto\\ManejoPresupuesto\\wwwroot\\css\\customcss.css",
+      "SourceId": "ManejoPresupuesto",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\usuario\\source\\ManejoPresupuesto\\ManejoPresupuesto\\wwwroot\\",
+      "BasePath": "_content/ManejoPresupuesto",
+      "RelativePath": "css/customcss.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\customcss.css"
     },
     {
       "Identity": "C:\\Users\\usuario\\source\\ManejoPresupuesto\\ManejoPresupuesto\\wwwroot\\css\\site.css",
@@ -933,6 +950,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\usuario\\source\\ManejoPresupuesto\\ManejoPresupuesto\\wwwroot\\lib\\jquery-ui\\jquery-ui.min.js",
+      "SourceId": "ManejoPresupuesto",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\usuario\\source\\ManejoPresupuesto\\ManejoPresupuesto\\wwwroot\\",
+      "BasePath": "_content/ManejoPresupuesto",
+      "RelativePath": "lib/jquery-ui/jquery-ui.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\jquery-ui\\jquery-ui.min.js"
     },
     {
       "Identity": "C:\\Users\\usuario\\source\\ManejoPresupuesto\\ManejoPresupuesto\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
