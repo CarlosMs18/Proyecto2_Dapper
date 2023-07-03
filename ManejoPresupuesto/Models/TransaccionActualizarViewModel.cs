@@ -4,7 +4,7 @@
                                                                                //lo que hara ser agregar las dos propiedades nuevas 
 
     {
-        public int cuentaAnteriorId { get; set; }  
+        public int CuentaAnteriorId { get; set; }  
         public decimal MontoAnterior { get; set; }  
     }
 }

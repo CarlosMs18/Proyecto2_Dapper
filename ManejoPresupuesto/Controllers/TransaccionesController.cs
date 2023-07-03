@@ -1,28 +1,32 @@
-﻿using ManejoPresupuesto.Models;
+﻿using AutoMapper;
+using ManejoPresupuesto.Models;
 using ManejoPresupuesto.Servicios;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ManejoPresupuesto.Controllers
 {
-    public class TransaccionesController :Controller
+    public class TransaccionesController : Controller
     {
         private readonly IServicioUsuarios servicioUsuarios;
         private readonly IRepositorioCuentas repositorioCuentas;
         private readonly IRepositorioCategorias repositorioCategorias;
         private readonly IRepositorioTransacciones repositorioTransacciones;
+        private readonly IMapper mapper;
 
         public TransaccionesController(
-            IServicioUsuarios servicioUsuarios , 
+            IServicioUsuarios servicioUsuarios,
             IRepositorioCuentas repositorioCuentas,
             IRepositorioCategorias repositorioCategorias,
-            IRepositorioTransacciones repositorioTransacciones
+            IRepositorioTransacciones repositorioTransacciones,
+            IMapper mapper
             )
         {
-            this.servicioUsuarios = servicioUsuarios ;
+            this.servicioUsuarios = servicioUsuarios;
             this.repositorioCuentas = repositorioCuentas;
             this.repositorioCategorias = repositorioCategorias;
             this.repositorioTransacciones = repositorioTransacciones;
+            this.mapper = mapper;
         }
 
         public IActionResult Index()
@@ -36,7 +40,7 @@ namespace ManejoPresupuesto.Controllers
             var modelo = new TransaccionCreacionViewModel();
             modelo.Cuentas = await ObtenerCuentas(usuarioId);
             modelo.Categorias = await ObtenerCategorias(usuarioId, modelo.TipoOperacionId); //para mostrar las categorias dinamicamente
-    
+
             return View(modelo);
 
         }
@@ -46,6 +50,70 @@ namespace ManejoPresupuesto.Controllers
         public async Task<IActionResult> Crear(TransaccionCreacionViewModel modelo)
         {
             Console.WriteLine(modelo);
+            var usuarioId = servicioUsuarios.ObtenerUsuarioId();
+            if (!ModelState.IsValid)
+            {
+                modelo.Cuentas = await ObtenerCuentas(usuarioId);
+                modelo.Categorias = await ObtenerCategorias(usuarioId, modelo.TipoOperacionId);
+                return View(modelo);
+            }
+
+            var cuenta = await repositorioCuentas.ObtenerPorId(modelo.CuentaId, usuarioId);
+            if (cuenta is null)
+            {
+                return RedirectToAction("NoEncontrado", "Home");
+            }
+
+            var categoria = await repositorioCategorias.ObtenerPorId(modelo.CategoriaId, usuarioId);
+            if (categoria is null)
+            {
+                return RedirectToAction("NoEncontrado", "Home");
+            }
+
+            modelo.UsuarioId = usuarioId;
+            if (modelo.TipoOperacionId == TipoOperacion.Gasto)
+            {
+                modelo.Monto *= -1;
+            }
+
+            await repositorioTransacciones.Crear(modelo);
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Editar(int id)
+        {
+            var usuarioId = servicioUsuarios.ObtenerUsuarioId();
+            var transaccion = await repositorioTransacciones.ObtenerPorId(id, usuarioId);
+            if(transaccion is null)
+            {
+                return RedirectToAction("NoEncontrado", "Home");
+            }
+
+            //nevesitamos automapper porque necesitamosmapear de transaccion a transaccionActualizacionViewMdoel porque
+            //ese sera el modelo de nuestra vista para editar actualizacion la transaccion
+
+            var modelo = mapper.Map<TransaccionActualizarViewModel>(transaccion);
+
+            modelo.MontoAnterior = modelo.Monto; //en caso de que sea un ingreso
+
+            if(modelo.TipoOperacionId == TipoOperacion.Gasto)
+            {
+                modelo.MontoAnterior = modelo.Monto * - 1; //hacemos esto apra que se tome como in valor negativo puesto que es el gasto
+
+            }
+
+            modelo.CuentaAnteriorId = transaccion.CuentaId;
+            modelo.Categorias = await ObtenerCategorias(usuarioId, transaccion.TipoOperacionId);
+            modelo.Cuentas = await ObtenerCuentas(usuarioId);
+            return View(modelo);    
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Editar(TransaccionActualizarViewModel modelo)
+        {
             var usuarioId = servicioUsuarios.ObtenerUsuarioId();
             if (!ModelState.IsValid)
             {
@@ -66,15 +134,30 @@ namespace ManejoPresupuesto.Controllers
                 return RedirectToAction("NoEncontrado", "Home");
             }
 
-            modelo.UsuarioId = usuarioId;
+            var transaccion = mapper.Map<Transaccion>(modelo);
             if(modelo.TipoOperacionId == TipoOperacion.Gasto)
             {
-                modelo.Monto *= -1;
+                transaccion.Monto *= -1;
             }
 
-            await repositorioTransacciones.Crear(modelo);
+            await repositorioTransacciones.Actualizar(transaccion, modelo.MontoAnterior, modelo.CuentaAnteriorId);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Borrar(int id)
+        {
+            var usuarioId = servicioUsuarios.ObtenerUsuarioId();
+            var transaccion = await repositorioTransacciones.ObtenerPorId(id, usuarioId);
+            if(transaccion is null)
+            {
+                return RedirectToAction("NoEncontrado", "Home");
+            }
+
+            await repositorioTransacciones.Borrar(id);
+            return RedirectToAction("Index");
+        }
+
 
         private async Task<IEnumerable<SelectListItem>> ObtenerCuentas(int usuarioId)
         {
