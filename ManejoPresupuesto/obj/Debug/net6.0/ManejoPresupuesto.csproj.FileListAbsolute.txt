@@ -134,3 +134,5 @@ C:\Users\Tinnova1\source\repos\dapper2\ManejoPresupuesto\obj\Debug\net6.0\Manejo
 C:\Users\Tinnova1\source\repos\dapper2\ManejoPresupuesto\obj\Debug\net6.0\ref\ManejoPresupuesto.dll
 C:\Users\Tinnova1\source\repos\dapper2\ManejoPresupuesto\obj\Debug\net6.0\scopedcss\Views\Cuentas\Index.cshtml.rz.scp.css
 C:\Users\usuario\source\ManejoPresupuesto\ManejoPresupuesto\obj\Debug\net6.0\scopedcss\Views\Cuentas\Index.cshtml.rz.scp.css
+C:\Users\usuario\source\ManejoPresupuesto\ManejoPresupuesto\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\usuario\source\ManejoPresupuesto\ManejoPresupuesto\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
